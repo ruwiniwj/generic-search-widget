@@ -1,0 +1,58 @@
+{
+  "name": "Search",
+  "id": "Search",
+  "thumbnailURL": "",
+  "configs": {
+    "pubsub": {
+      "types": ["publisher"]
+    },
+    "providerConfig": {
+      "configs": {
+        "type": "RDBMSBatchDataProvider",
+        "config": {
+          "datasourceName": "{{datasourceName}}",
+          "queryData": {
+            "query": "select distinct({{columnName}}) from {{tableName}}"
+          },
+          "tableName": "{{tableName}}",
+          "incrementalColumn": "{{columnName}}",
+          "publishingInterval": 60
+        }
+      }
+    },
+    "options": [
+      {
+        "id": "datasourceName",
+        "title": "Datasource Name",
+        "type": {
+          "name": "TEXT"
+        },
+        "defaultValue": ""
+      },
+      {
+        "id": "tableName",
+        "title": "Table Name",
+        "type": {
+          "name": "TEXT"
+        },
+        "defaultValue": ""
+      },
+      {
+        "id": "columnName",
+        "title": "Column Name",
+        "type": {
+          "name": "TEXT"
+        },
+        "defaultValue": ""
+      },
+      {
+        "id": "selectMultipleOptions",
+        "title": "Select Multiple Options",
+        "type": {
+          "name": "BOOLEAN"
+        },
+        "defaultValue": ""
+      }
+    ]
+  }
+}
